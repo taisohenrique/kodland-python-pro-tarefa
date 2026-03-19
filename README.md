@@ -1,86 +1,64 @@
-# 📝 Flask Blog
+Blog Flask
 
-A lightweight blog application built with Python and Flask. This project demonstrates core Flask concepts such as routing, templates (Jinja2), forms, and in-memory data management.
+Uma aplicação de blog leve construída com Python e Flask. Este projeto demonstra conceitos fundamentais do Flask, como rotas, templates (Jinja2), formulários e gerenciamento de dados em memória.
 
----
+##Funcionalidades##
 
-## 🚀 Features
+Listar posts — a página inicial exibe todos os posts publicados com resumo e metadados
 
-- **List posts** — home page displays all published posts with excerpt and metadata
-- **Read post** — dedicated page for each post with full content
-- **Create post** — form to write and publish new posts (title, author, content)
-- **Delete post** — remove any post from the home page or detail page
-- **Responsive layout** — clean dark-themed interface using HTML & CSS
+Ler post — página dedicada para cada post com conteúdo completo
 
----
+Criar post — formulário para escrever e publicar novos posts (título, autor, conteúdo)
 
-## 🛠 Technologies Used
+Deletar post — remove qualquer post da página inicial ou da página de detalhes
 
-| Technology | Purpose |
-|---|---|
-| Python 3.x | Programming language |
-| Flask | Web framework (routing, templates, forms) |
-| Jinja2 | HTML templating engine (included with Flask) |
-| HTML + CSS | Frontend interface |
+Layout responsivo — interface limpa com tema escuro usando HTML e CSS
 
----
-
-## 📁 Project Structure
-
-```
+##Tecnologias Utilizadas##
+Tecnologia	Finalidade
+Python 3.x	Linguagem de programação
+Flask	Framework web (rotas, templates, formulários)
+Jinja2	Motor de templates HTML (incluído no Flask)
+HTML + CSS	Interface frontend
+📁 Estrutura do Projeto
 flask-blog/
-├── app.py               # Main application — routes and logic
-├── requirements.txt     # Project dependencies
-├── README.md            # Project documentation
+├── app.py               # Aplicação principal — rotas e lógica
+├── requirements.txt     # Dependências do projeto
+├── README.md            # Documentação do projeto
 └── templates/
-    ├── base.html        # Base layout (header, footer, styles)
-    ├── index.html       # Home page — list of posts
-    ├── post.html        # Post detail page
-    └── new_post.html    # Form to create a new post
-```
+    ├── base.html        # Layout base (cabeçalho, rodapé, estilos)
+    ├── index.html       # Página inicial — lista de posts
+    ├── post.html        # Página de detalhes do post
+    └── new_post.html    # Formulário para criar um novo post
 
----
+##Como Executar##
 
-## ⚙️ How to Run
+1. Clone ou baixe o projeto
 
-**1. Clone or download the project**
+2. Instale as dependências
 
-**2. Install dependencies**
-```bash
 pip install -r requirements.txt
-```
 
-**3. Run the application**
-```bash
+3. Execute a aplicação
+
 python app.py
-```
 
-**4. Open in your browser**
-```
+4. Abra no navegador
+
 http://localhost:5000
-```
 
----
+##Rotas##
+Método	Rota	Descrição
+GET	/	Lista todos os posts
+GET	/post/<id>	Exibe um único post
+GET/POST	/new	Formulário para criar um novo post
+POST	/delete/<id>	Deleta um post pelo ID
 
-## 📌 Routes
 
-| Method | Route | Description |
-|---|---|---|
-| GET | `/` | Lists all posts |
-| GET | `/post/<id>` | Displays a single post |
-| GET/POST | `/new` | Form to create a new post |
-| POST | `/delete/<id>` | Deletes a post by ID |
+##Observações##
 
----
+Os posts são armazenados em memória (sem banco de dados). Os dados são resetados quando o servidor reinicia.
 
-## 🗒 Notes
+Este projeto é intencionalmente simples para servir como exemplo educacional para iniciantes em Python.
 
-- Posts are stored **in memory** (no database). Data resets when the server restarts.
-- This project is intentionally simple to serve as an educational example for beginner Python students.
-- Can be extended with: SQLite database, user authentication, image uploads, etc.
-
----
-
-## 👩‍💻 Author
-
-Developed as a practical task for the Kodland Python Pro tutor selection process.
+Pode ser expandido com: banco de dados SQLite, autenticação de usuários, upload de imagens, etc.
