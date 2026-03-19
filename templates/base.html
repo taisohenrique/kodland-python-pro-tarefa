@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- título dinâmico por página -->
+    <title>{% block title %}Flask Blog{% endblock %}</title>
+
+    <style>
+        /* fontes */
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Source+Sans+3:wght@400;600&display=swap');
+
+        :root {
+            --bg: #0f0e17;
+            --surface: #1a1929;
+            --accent: #ff6b35;
+            --accent-soft: #f7c59f;
+            --text: #fffffe;
+            --muted: #a7a9be;
+            --border: #2e2d44;
+        }
+
+        /* reset básico */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Source Sans 3', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* HEADER */
+        header {
+            background: var(--surface);
+            border-bottom: 1px solid var(--border);
+            padding: 1.2rem 2rem;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            text-decoration: none;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            color: var(--accent);
+            letter-spacing: -0.5px;
+        }
+
+        .btn {
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            padding: 0.5rem 1.1rem;
+            border-radius: 6px;
+
+            background: var(--accent);
+            color: white;
+
+            transition: transform 0.15s ease, opacity 0.15s ease;
+        }
+
+        .btn:hover {
+            opacity: 0.9;
+            transform: translateY(-1px);
+        }
+
+        /* CONTEÚDO */
+        main {
+            flex: 1;
+            max-width: 860px;
+            width: 100%;
+            margin: 2.5rem auto;
+            padding: 0 1.5rem;
+        }
+
+        /* FOOTER */
+        footer {
+            text-align: center;
+            color: var(--muted);
+            font-size: 0.8rem;
+            padding: 1.5rem;
+            border-top: 1px solid var(--border);
+        }
+
+        footer span {
+            opacity: 0.7;
+        }
+
+        /* pequeno ajuste mobile */
+        @media (max-width: 600px) {
+            header {
+                padding: 1rem;
+            }
+
+            .logo {
+                font-size: 1.3rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <!-- clique no logo volta pra home -->
+        <a href="{{ url_for('index') }}" class="logo">
+            📝 Flask Blog
+        </a>
+
+        <a href="{{ url_for('new_post') }}" class="btn">
+            + Novo Post
+        </a>
+    </header>
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer>
+        <span>Projeto pessoal • Flask + Python</span>
+    </footer>
+
+</body>
+</html>

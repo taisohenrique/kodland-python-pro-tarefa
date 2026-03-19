@@ -1,0 +1,151 @@
+{% extends "base.html" %}
+{% block title %}Novo Post — Flask Blog{% endblock %}
+
+{% block content %}
+<style>
+    /* título */
+    .form-title {
+        font-family: 'Playfair Display', serif;
+        font-size: 1.9rem;
+        margin-bottom: 0.3rem;
+    }
+
+    .form-subtitle {
+        color: var(--muted);
+        margin-bottom: 2rem;
+        font-size: 0.9rem;
+    }
+
+    .form-group {
+        margin-bottom: 1.2rem;
+    }
+
+    label {
+        display: block;
+        font-weight: 600;
+        margin-bottom: 0.35rem;
+        font-size: 0.8rem;
+        color: var(--muted);
+    }
+
+    input[type="text"],
+    textarea {
+        width: 100%;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 6px;
+        padding: 0.7rem 0.9rem;
+        color: var(--text);
+        font-family: inherit;
+        font-size: 0.95rem;
+
+        transition: border-color 0.15s ease, box-shadow 0.15s ease;
+        outline: none;
+    }
+
+    input:focus,
+    textarea:focus {
+        border-color: var(--accent);
+        box-shadow: 0 0 0 1px var(--accent);
+    }
+
+    textarea {
+        min-height: 160px;
+        resize: vertical;
+        line-height: 1.5;
+    }
+
+    .form-actions {
+        margin-top: 1.5rem;
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+    }
+
+    .btn-submit {
+        background: var(--accent);
+        color: #fff;
+        border: none;
+        padding: 0.65rem 1.6rem;
+        border-radius: 6px;
+        font-size: 0.9rem;
+        font-weight: 600;
+        cursor: pointer;
+
+        transition: opacity 0.15s ease, transform 0.1s ease;
+    }
+
+    .btn-submit:hover {
+        opacity: 0.9;
+        transform: translateY(-1px);
+    }
+
+    .btn-submit:active {
+        transform: translateY(0);
+    }
+
+    .btn-cancel {
+        color: var(--muted);
+        text-decoration: none;
+        font-size: 0.85rem;
+    }
+
+    .btn-cancel:hover {
+        color: var(--text);
+    }
+
+    .hint {
+        font-size: 0.75rem;
+        color: var(--muted);
+        margin-top: 0.25rem;
+    }
+</style>
+
+<h1 class="form-title">Novo post</h1>
+<p class="form-subtitle">Escreve algo rápido e publica direto.</p>
+
+<form method="POST" action="{{ url_for('new_post') }}">
+
+    <div class="form-group">
+        <label for="title">Título *</label>
+        <input 
+            type="text" 
+            id="title" 
+            name="title" 
+            placeholder="Ex: Como comecei com Python"
+            required
+            autofocus>
+    </div>
+
+    <div class="form-group">
+        <label for="author">Autor</label>
+        <input 
+            type="text" 
+            id="author" 
+            name="author" 
+            placeholder="Seu nome (opcional)">
+        <div class="hint">Se deixar vazio, dá pra tratar no backend depois</div>
+    </div>
+
+    <div class="form-group">
+        <label for="content">Conteúdo *</label>
+        <textarea 
+            id="content" 
+            name="content" 
+            placeholder="Escreve aqui..." 
+            required></textarea>
+    </div>
+
+    <div class="form-actions">
+        <button class="btn-submit" type="submit">
+            Publicar
+        </button>
+
+        <a class="btn-cancel" href="{{ url_for('index') }}">
+            cancelar
+        </a>
+    </div>
+
+</form>
+
+{% endblock %}

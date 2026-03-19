@@ -1,0 +1,99 @@
+{% extends "base.html" %}
+{% block title %}{{ post.title }} — Flask Blog{% endblock %}
+
+{% block content %}
+<style>
+    .back-link {
+        color: var(--muted);
+        text-decoration: none;
+        font-size: 0.85rem;
+        display: inline-block;
+        margin-bottom: 1.5rem;
+    }
+
+    .back-link:hover {
+        color: var(--accent-soft);
+    }
+
+    .post-title {
+        font-family: 'Playfair Display', serif;
+        font-size: 2.2rem;
+        line-height: 1.2;
+        margin-bottom: 0.5rem;
+    }
+
+    .post-meta {
+        color: var(--muted);
+        font-size: 0.85rem;
+        margin-bottom: 1.8rem;
+        padding-bottom: 1rem;
+        border-bottom: 1px solid var(--border);
+    }
+
+    .post-body {
+        line-height: 1.7;
+        font-size: 1rem;
+        color: #d4d4e8;
+        white-space: pre-wrap;
+    }
+
+    .post-footer {
+        margin-top: 2.2rem;
+        padding-top: 1.2rem;
+        border-top: 1px solid var(--border);
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+    }
+
+    .btn-delete {
+        background: transparent;
+        border: 1px solid #e45c5c;
+        color: #e45c5c;
+        padding: 0.45rem 1rem;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 0.85rem;
+        font-family: inherit;
+
+        transition: background 0.15s ease, color 0.15s ease;
+    }
+
+    .btn-delete:hover {
+        background: #e45c5c;
+        color: #fff;
+    }
+
+    .meta-separator {
+        opacity: 0.5;
+        margin: 0 0.3rem;
+    }
+</style>
+
+<a class="back-link" href="{{ url_for('index') }}">
+    ← voltar
+</a>
+
+<h1 class="post-title">{{ post.title }}</h1>
+
+<p class="post-meta">
+    por <strong>{{ post.author or 'Anônimo' }}</strong>
+    <span class="meta-separator">•</span>
+    {{ post.date }}
+</p>
+
+<div class="post-body">
+    {{ post.content }}
+</div>
+
+<div class="post-footer">
+    <form method="POST" action="{{ url_for('delete_post', post_id=post.id) }}">
+        <button 
+            class="btn-delete"
+            onclick="return confirm('Excluir esse post?')">
+            excluir
+        </button>
+    </form>
+</div>
+
+{% endblock %}
