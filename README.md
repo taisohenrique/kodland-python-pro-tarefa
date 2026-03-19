@@ -20,7 +20,8 @@ Python 3.x	Linguagem de programação
 Flask	Framework web (rotas, templates, formulários)
 Jinja2	Motor de templates HTML (incluído no Flask)
 HTML + CSS	Interface frontend
-📁 Estrutura do Projeto
+
+Estrutura do Projeto
 flask-blog/
 ├── app.py               # Aplicação principal — rotas e lógica
 ├── requirements.txt     # Dependências do projeto
